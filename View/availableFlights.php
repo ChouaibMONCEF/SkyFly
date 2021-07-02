@@ -1,18 +1,13 @@
+<?php 
 
-<?php
     if(isset($_POST['find'])){
         $flightobj= new flightController();
-        $flights=$flightobj->findFlights();
+        $flights=$flightobj->availableFlights();
     }else{
-        $flightobj= new flightController();
-        $flights=$flightobj->getAllFlights();
+        echo 'error2Z';
     }
 
-
-
-    
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,18 +18,6 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <div class="col-md-11 mx-auto card card-body bg-light " >
-    <div>
-    <a href="<?php echo BASE_URL;?>addflight"> Add flight </a>
-    </div>
-    <div>
-    <a href="<?php echo BASE_URL;?>reservations"> Reservations </a>
-    </div>
-    <form method="POST" class="float-right mb-2 d-flex flex-row">
-    <input type="text" class="form-control" name="search"placeholder="search" >
-    <button class="btn btn-info btn-sm" name="find" type="submit"></button>
-    </form>
     <table class="table table-striped">
     <thead>
         <tr>
@@ -45,6 +28,7 @@
         <th scope="col">Depart</th>
         <th scope="col">Destination</th>
         <th scope="col">Price</th>
+        <th scope="col">Passengers</th>
         <th scope="col">Action</th>
         </tr>
     </thead>
@@ -58,19 +42,15 @@
         <td><?php echo $flight['departCity']; ?> </td>
         <td><?php echo $flight['arriveCity']; ?> </td>
         <td><?php echo $flight['Price']; ?> </td>
-        <td> 
-        <form method="post" action="update"> 
-        <input type="hidden" name="id" value="<?php echo $flight['id'] ?>">
-        <button class="btn btn-sm btn-warning" >Edit</button>
-        </form>
-        <form method="post" action="delete"> 
-        <input type="hidden" name="id" value="<?php echo $flight['id'] ?>">
-        <button class="btn btn-sm btn-danger" >Delete</button>
+         
+        <form method="post" action="Reserve"> 
+        <td><input type="number" name="passengers" value="1"></td>
+        <td><input type="hidden" name="id" value="<?php echo $flight['id'] ?>">
+        <button type="submit" name=""class="btn btn-sm btn-success" >Reserve Now</button></td>
         </form>
         </tr>
         <?php endforeach ?>
     </tbody>
 </table>
-</div>
 </body>
 </html>

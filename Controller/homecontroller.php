@@ -5,4 +5,5 @@ class Hcontroller{
         include('view/'.$page.'.php');
     }
 }
+
 ?>

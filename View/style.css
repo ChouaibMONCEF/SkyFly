@@ -80,3 +80,21 @@ body {
 input {
   margin-bottom: 10px;
 }
+
+.form  {
+  float: left;
+}
+h1 {
+  font-size: 90px;
+}
+span {
+  font-size: 35px;
+}
+.text {
+  color: rgba(245, 245, 245, 0.835);
+  float: right;
+  margin: 24vh 13vw 25vh 0vh;
+  padding: 20px;
+  height: 500px;
+  width: 51vw;
+}

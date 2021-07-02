@@ -1,13 +1,11 @@
 <?php 
 
-  if(isset($_POST['submit'])){
-    $createUser = new userscontroller();
-    $createUser->register();
-  }
+    if(isset($_POST['submit'])){
+    $loginAdmin = new admincontroller();
+    $loginAdmin->adminauth();
+    }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +20,19 @@
 </head>
 <body>
 <?php  include'includes/Header.php' ?>
-<div class="hdr"> <h2> Register </h2> </div>
+<div class="hdr"> <h2> Admin login </h2> </div>
 <div class="form col-sm-8">
 <form action="" method="POST" >
   <div class="form-group">
-    <label for="fullname">Full name:</label>
-    <input type="Text" class="form-control" name="fullname" placeholder="Full name" >
-    <label for="email">Email</label>
-    <input type="text" class="form-control" name="email" placeholder="From">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" name="username" placeholder="From">
     <label for="pswrd">Password</label>
     <input type="password" placeholder="To" name="pswrd" class="form-control">
-    <label for="passportid">Passport Id:</label>
-    <input type="text" class="form-control" name="passportid" placeholder="Passport Id">
-    <label for="birthdate">Birthdate</label>
-    <input type="date" name="birthdate" class="form-control">
-    <button class="btn" name="submit" type="submit">Register</button>
+    <button class="btn" name="submit" type="submit">Connect</button>
 </div>
 </form>
 <div>
-<a href="<?php echo BASE_URL;?>login" class="black" >Connect</a>
+<a href="<?php echo BASE_URL;?>Register" class="black" >Register</a>
 </div>
 </div>
 </body>

@@ -6,48 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="view/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/view/style.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-right">
-  <a class="navbar-brand" href="#"> <img class="image" src="Images/Untitled-1.png" alt="" srcset=""> </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto ">
-      <a class="nav-item nav-link " href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="#">Register</a>
-      <a class="nav-item nav-link " href="#">Login</a>
-      
-    </div>
-  </div>
-</nav>
+<?php  include'includes/Header.php' ?>
+<div class="tdiv" >
 <div class="form col-sm-8">
-<form>
+<form method="POST" action="availableFlights" >
   <div class="form-group">
     <label for="formGroupExampleInput">Depart city</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="From">
+    <input name="departCity" type="text" class="form-control" id="formGroupExampleInput" placeholder="From">
     <label for="formGroupExampleInput">Arrive city</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="To">
+    <input name="arriveCity" type="text" class="form-control" id="formGroupExampleInput" placeholder="To">
     <div class="block">
       <div class="halfone">
-    <label for="formGroupExampleInput2">label</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" >
+    <label for="formGroupExampleInput2">Departure</label>
+    <input name="flightDate" type="date" class="form-control" id="formGroupExampleInput2" >
     </div>
     <div class="halftwo">
-    <label for="formGroupExampleInput2">label</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" >
+    <label id="nonee" for="formGroupExampleInput2">Return</label>
+    <input name="flightDate" type="date" class="form-control" id="none" >
     </div>
   </div>
-    <label for="formGroupExampleInput2">label</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-    <label for="formGroupExampleInput2">label</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-    <button class="btn">Reserve</button>
+    <label for="formGroupExampleInput2">type</label> <br>
+    <div>
+    <input type="radio" onclick="javascript:ftype()" id="roundtrip" name="type">
+  <label for="roundtrip">Round Trip</label>
+  <input type="radio" onclick="javascript:ftype()" id="oneway" name="type" >
+  <label for="oneway">One Way</label><br>
+    </div>
+    <button class="btn" name="find" type="submit">Reserve</button>
 </div>
 </form>
+  <script>
+  function ftype(){
+  if (document.getElementById("oneway").checked) {
+    document.getElementById('none').style.display = 'none';
+    document.getElementById('nonee').style.display = 'none';
+    document.getElementById("roundtrip").checked = false
+  }else if (document.getElementById("roundtrip").checked){
+    document.getElementById("oneway").checked = false
+    document.getElementById('none').style.display = 'block';
+    document.getElementById('nonee').style.display = 'block';
+
+  }
+}
+  </script>
 </div>
+<div class="text" >
+  <h1>Reserve Now</h1>
+  <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet aliquid, est unde repudiandae harum consequuntur.</span>
+  </div>
+</div>
+
 </body>
 </html>
